@@ -1,0 +1,10 @@
+services:
+  apps:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/apps
+    tty: true
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY:-false}

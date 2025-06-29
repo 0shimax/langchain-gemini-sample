@@ -1,0 +1,6 @@
+langchain-google-genai~=2.1.5
+langgraph~=0.5.0
+
+notebook
+ipython
+ruff~=0.12.1
