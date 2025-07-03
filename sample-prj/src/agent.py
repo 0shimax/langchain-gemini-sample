@@ -9,7 +9,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 class OnsenAgent:
     def __init__(self, model_name: str = "gemini-2.5-flash"):
-        self.modoel_name = model_name
+        self.model_name = model_name
 
         api_key = os.getenv("GOOGLE_API_KEY")
         if not api_key:
@@ -19,7 +19,7 @@ class OnsenAgent:
 
         self.llm = ChatGoogleGenerativeAI(model=model_name, google_api_key=api_key)
 
-    def serach_web(self, user_question: str):
+    def search_web(self, user_question: str):
         # Google Search Toolの定義
         # https://ai.google.dev/gemini-api/docs/migrate?hl=ja
         # https://github.com/googleapis/python-genai
@@ -48,12 +48,12 @@ class OnsenAgent:
 
     def explore(self, user_question: str):
         try:
-            context = self.serach_web(user_question)
+            context = self.search_web(user_question)
             return self.post_process(context, user_question)
-        except Exception:
+        except Exception as e:
             error_msg = traceback.format_exc()
             msg = f"エージェントの実行中にエラーが発生しました: {error_msg}"
-            raise RuntimeError(msg)
+            raise RuntimeError(msg) from e
 
 
 if __name__ == "__main__":
