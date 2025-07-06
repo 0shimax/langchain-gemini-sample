@@ -40,7 +40,7 @@ class RagAgent:
         )
         self.vector_store = InMemoryVectorStore(self.doc_embeddings)
 
-    def rag_srouce_loader(
+    def rag_source_loader(
         self,
         urls: list[str] = [
             # "https://tierzine.com/cats/popular-cat-breeds/",
@@ -85,12 +85,13 @@ class RagAgent:
 
 if __name__ == "__main__":
     agent = RagAgent()
-    agent.rag_srouce_loader()
+    agent.rag_source_loader()
 
     graph_builder = StateGraph(State)
     graph_builder.add_node("retrieve", agent.retrieve)
     graph_builder.add_node("generate", agent.generate)
     graph_builder.add_edge(START, "retrieve")
+    graph_builder.add_edge("retrieve", "generate")    
     graph = graph_builder.compile()
 
     question = "チンチラってどんな猫？"

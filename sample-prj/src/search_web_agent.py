@@ -31,6 +31,8 @@ class OnsenAgent:
                 response_modalities=["TEXT"],
             ),
         )
+        if not response.candidates:
+            return "（回答を生成できませんでした）"
         return response.candidates[0].content.parts[0].text
 
     def post_process(self, context: str, user_question: str):

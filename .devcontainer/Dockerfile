@@ -3,7 +3,7 @@ FROM public.ecr.aws/docker/library/python:3.12-bookworm
 ENV DEBIAN_FRONTEND=noninteractive
 ENV GIT_PYTHON_REFRESH=quiet
 
-RUN apt-get update && apt-get install -y --no-install-recommends htop wget curl unzip git
+RUN apt-get update && apt-get install -y --no-install-recommends htop wget curl unzip git && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --upgrade pip && \

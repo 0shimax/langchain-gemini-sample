@@ -31,6 +31,8 @@ class OnsenAgent:
                 response_modalities=["TEXT"],
             ),
         )
+        if not response.candidates:
+            return "（回答を生成できませんでした）"
         return response.candidates[0].content.parts[0].text
 
     def post_process(self, context: str, user_question: str):
@@ -79,4 +81,9 @@ if __name__ == "__main__":
     question = input("質問: ")
 
     response = agent.explore(question)
-    print(f"エージェント: {response}")
+    while True:
+        question = input("質問: ")
+        if question.lower() == "exit":
+            break
+        response = agent.explore(question)
+        print(f"エージェント: {response}")
