@@ -1,0 +1,44 @@
+{
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "apps",
+  "workspaceFolder": "/apps",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "extensions.verifySignature": false,
+        "editor.guides.bracketPairs": true,
+        "editor.renderWhitespace": "all",
+        "[python]": {
+          "notebook.formatOnSave.enabled": true,
+          "notebook.codeActionsOnSave": {
+            "notebook.source.fixAll": "explicit",
+            "notebook.source.organizeImports": "explicit"
+          },
+          "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+          },
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
+          "editor.formatOnPaste": false,
+          "editor.formatOnType": false,
+          "editor.formatOnSaveMode": "file",
+          "python.languageServer": "Pylance",
+          "ruff.configuration": "/apps/.devcontainer/ruff.toml",
+          "ruff.configurationPreference": "filesystemFirst"
+        }
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff",
+        "ms-azuretools.vscode-docker",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-keymap",
+        "mechatroner.rainbow-csv",
+        "ionutvmi.path-autocomplete",
+        "donjayamanne.githistory"
+      ]
+    }
+  }
+}
