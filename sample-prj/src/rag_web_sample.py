@@ -87,7 +87,9 @@ if __name__ == "__main__":
     agent = RagAgent()
     agent.rag_srouce_loader()
 
-    graph_builder = StateGraph(State).add_sequence([agent.retrieve, agent.generate])
+    graph_builder = StateGraph(State)
+    graph_builder.add_node("retrieve", agent.retrieve)
+    graph_builder.add_node("generate", agent.generate)
     graph_builder.add_edge(START, "retrieve")
     graph = graph_builder.compile()
 
