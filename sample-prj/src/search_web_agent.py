@@ -24,7 +24,7 @@ class OnsenAgent:
         # https://ai.google.dev/gemini-api/docs/migrate?hl=ja
         # https://github.com/googleapis/python-genai
         response = self.client.models.generate_content(
-            model=self.modoel_name,
+            model=self.model_name,
             contents=user_question,
             config=types.GenerateContentConfig(
                 tools=[types.Tool(google_search=types.GoogleSearch())],
