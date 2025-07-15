@@ -17,7 +17,10 @@ class State(TypedDict):
 
 
 class KVCache:
-    def __init__(self, full_text: str, default_model: str = "microsoft/phi-4"):
+    # def __init__(self, full_text: str, default_model: str = "microsoft/phi-4"):
+    def __init__(
+        self, full_text: str, default_model: str = "microsoft/Phi-4-mini-instruct"
+    ):
         self.tokenizer = AutoTokenizer.from_pretrained(default_model)
         self.model = AutoModelForCausalLM.from_pretrained(default_model)
         self.knowledgebase = self.tokenizer(full_text, return_tensors="pt").input_ids
@@ -57,8 +60,7 @@ class KVCache:
 
 
 class ChatAgent:
-    # def __init__(self, model_name: str = "gemini-2.5-flash"):
-    def __init__(self, model_name: str = "gemini-2.5-flash-lite"):
+    def __init__(self, model_name: str = "gemini-2.5-flash"):
         self.model_name = model_name
 
         api_key = os.getenv("GOOGLE_API_KEY")
@@ -66,7 +68,6 @@ class ChatAgent:
             raise ValueError("GOOGLE_API_KEY environment variable not set.")
         # Only run this block for Gemini Developer API
         self.client = genai.Client(api_key=api_key)
-        # self.chat = ChatGoogleGenerativeAI(model=model_name, google_api_key=api_key)
 
     def _build_chat_config(self, cache):
         return self.client.chats.create(
@@ -103,8 +104,8 @@ class ChatAgent:
         full_text = self._load_pdf_source(pdf_path)
         self.kv_cache = KVCache(full_text)
 
-        cache = self._cache_context()
-        self.chat = self._build_chat_config(cache)
+        # cache = self._cache_context(full_text)
+        # self.chat = self._build_chat_config(cache)
 
     def get_answer(self, question: str):
         return self.kv_cache.get_answer(question)
