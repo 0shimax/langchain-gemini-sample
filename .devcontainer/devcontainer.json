@@ -2,6 +2,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "apps",
   "workspaceFolder": "/apps",
+  "postCreateCommand": "pre-commit install-hooks",
   "customizations": {
     "vscode": {
       "settings": {

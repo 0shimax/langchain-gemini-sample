@@ -42,14 +42,14 @@ class RagAgent:
 
     def rag_source_loader(
         self,
-        urls: str = "https://tierzine.com/cats/persian-chinchilla-traits/",
+        url: str = "https://tierzine.com/cats/persian-chinchilla-traits/",
         # "https://tierzine.com/cats/popular-cat-breeds/",
         # "https://www.nihonpet.co.jp/cat/mainecoon.html#:~:text=%E7%94%B3%E8%BE%BC%E3%81%BF%E3%81%AF%E3%81%93%E3%81%A1%E3%82%89-,%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%BC%E3%83%B3%E3%81%AE%E6%80%A7%E6%A0%BC,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E5%A5%BD%E3%81%BF%E3%81%BE%E3%81%99%E3%80%82",
         # "https://www.anicom-sompo.co.jp/nekonoshiori/963.html",
         # "https://www.nihonpet.co.jp/cat/ragamuffin.html",
     ):
         loader = WebBaseLoader(
-            web_paths=(*urls,),
+            web_paths=(url,),
             bs_kwargs={
                 "parse_only": bs4.SoupStrainer(
                     class_=(
