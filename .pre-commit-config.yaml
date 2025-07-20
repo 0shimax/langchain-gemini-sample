@@ -40,3 +40,9 @@ repos:
         require_serial: true
         additional_dependencies: []
         minimum_pre_commit_version: "4.2.0"
+  - repo: local
+    hooks:
+      - id: ty
+        name: ty check
+        entry: uv ty check . --ignore unresolved-import
+        language: python
