@@ -6,7 +6,7 @@ repos:
       # Run the linter.
       - id: ruff
         name: ruff
-        description: "Run 'ruff' for extremely fast Python linting"
+        description: "Run 'ruff' for checking Python linting"
         entry: ruff check --force-exclude
         language: python
         types_or: [python, pyi]
@@ -18,11 +18,22 @@ repos:
       # Run the formatter.
       - id: ruff-format
         name: ruff-format
-        description: "Run 'ruff format' for extremely fast Python formatting"
+        description: "Run 'ruff format' for formatting Python codes"
         entry: ruff format --force-exclude
         language: python
         types_or: [python, pyi]
         args: []
+        require_serial: true
+        additional_dependencies: []
+        minimum_pre_commit_version: "4.2.0"
+      - id: ty
+        name: ty-check
+        description: "Run 'ty' for checking Python value type"
+        entry: ty check . --ignore unresolved-import
+        language: python
+        types_or: [python, pyi]
+        # --fix: enable lint fixes
+        args: [--fix]
         require_serial: true
         additional_dependencies: []
         minimum_pre_commit_version: "4.2.0"
