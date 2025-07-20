@@ -21,7 +21,7 @@ repos:
       - id: ruff
         name: ruff
         description: "Run 'ruff' for checking Python linting"
-        entry: ruff check --force-exclude
+        entry: uv ruff check --force-exclude
         language: python
         types_or: [python, pyi]
         # --fix: enable lint fixes
