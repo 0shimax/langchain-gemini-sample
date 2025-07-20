@@ -6,6 +6,11 @@ resolution-markers = [
     "python_full_version < '3.13'",
 ]
 
+[manifest]
+members = [
+    "sample-prj",
+]
+
 [[package]]
 name = "aiohappyeyeballs"
 version = "2.6.1"
@@ -2232,7 +2237,7 @@ wheels = [
 [[package]]
 name = "sample-prj"
 version = "0.1.0"
-source = { virtual = "." }
+source = { virtual = "sample-prj" }
 dependencies = [
     { name = "google-genai" },
     { name = "langchain" },
