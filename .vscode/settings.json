@@ -1,0 +1,20 @@
+{
+  "editor.guides.bracketPairs": true,
+  "editor.renderWhitespace": "all",
+  "[python]": {
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+      "notebook.source.fixAll": "explicit",
+      "notebook.source.organizeImports": "explicit"
+    },
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+    "editor.formatOnType": false,
+    "editor.formatOnSaveMode": "file"
+  }
+}

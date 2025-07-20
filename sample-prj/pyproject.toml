@@ -1,0 +1,56 @@
+[project]
+name = "sample-prj"
+version = "0.1.0"
+description = "sample"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain~=0.3.26",
+    "langchain-google-genai~=2.1.5",
+    "langgraph~=0.5.0",
+    "google-genai~=1.23.0",
+    "langchain-community~=0.3.26",
+    "tiktoken~=0.9.0",
+    "PyMuPDF~=1.26.3",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "notebook",
+    "ipython",
+    "ruff~=0.12.4",
+    "ty~=0.0.1a15",
+    "pre-commit~=4.2.0",
+]
+
+[tool.ruff]
+# 1行の最大文字数
+line-length = 90
+
+[tool.ruff.lint]
+# チェックするエラーの種類
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+# 除外するエラーの種類
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+    "W191",  # indentation contains tabs
+    "B904", # raise ... from ... になっていない場合のエラーを無視
+]
+
+# ファイルごとのエラー除外
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+# # isort の設定
+# [tool.ruff.lint.isort]
+# known-third-party = ["fastapi", "pydantic", "starlette"]

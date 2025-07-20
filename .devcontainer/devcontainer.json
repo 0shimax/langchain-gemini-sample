@@ -2,6 +2,7 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "apps",
   "workspaceFolder": "/apps",
+  "postCreateCommand": "pre-commit install-hooks",
   "customizations": {
     "vscode": {
       "settings": {
@@ -37,7 +38,8 @@
         "ms-toolsai.jupyter-keymap",
         "mechatroner.rainbow-csv",
         "ionutvmi.path-autocomplete",
-        "donjayamanne.githistory"
+        "donjayamanne.githistory",
+        "redhat.vscode-yaml"
       ]
     }
   }
