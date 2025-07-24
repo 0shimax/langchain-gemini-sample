@@ -78,9 +78,8 @@ if __name__ == "__main__":
     print("東京都内天然温泉銭湯施設AIエージェントへようこそ！")
     print("質問を入力してください（終了するには 'exit' と入力）。")
 
-    question = input("質問: ")
-
-    response = agent.explore(question)
+    # question = input("質問: ")
+    # response = agent.explore(question)
     while True:
         question = input("質問: ")
         if question.lower() == "exit":
