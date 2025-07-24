@@ -1,9 +1,12 @@
 import os
 
+from dotenv import load_dotenv
 from google import genai
 from langchain_core.documents import Document
 from PIL import Image
 from typing_extensions import TypedDict
+
+load_dotenv()
 
 
 # Define state for application
@@ -43,7 +46,7 @@ class RagAgent:
         """
         response = self.client.models.embed_content(
             model="gemini-embedding-001",
-            contents=content,
+            contents=[content],
             config=genai.types.EmbedContentConfig(
                 task_type=task_type,
                 output_dimensionality=output_dimensionality,
