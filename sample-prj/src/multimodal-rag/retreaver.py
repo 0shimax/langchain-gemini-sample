@@ -33,10 +33,11 @@ if __name__ == "__main__":
     texts_dict = {}
     with open(text_file_path, encoding="UTF-8") as f:
         text = f.read()
-        texts_dict["texts_list"] = text
+        texts_dict["texts_list"] = [text]
     retriver = generate_retriever(image_dir_path, texts_dict)
 
     question = "農水省が安全な作業をするために行っている施策について教えてください"
+    # question = "農水省が言及していることを教えて"
     answer = multimodal_rag(
         retriver,
         question,

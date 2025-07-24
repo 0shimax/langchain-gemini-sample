@@ -41,7 +41,7 @@ def generate_prompt(data: dict) -> list[HumanMessage]:
     # 画像がRetrivalで取得された場合には画像を追加,エンコードしてmatplotlibで表示する
     # 画像が複数取得されている場合には、関連性が最も高いものをモデルへの入力とする
     if data["context"]["images"]:
-        plt_image_base64(data["context"]["images"][0])
+        # plt_image_base64(data["context"]["images"][0])
         image_url = f"data:image/jpeg;base64,{data['context']['images'][0]}"
         image_message = {"type": "image_url", "image_url": {"url": image_url}}
         return [HumanMessage(content=[text_message, image_message])]
