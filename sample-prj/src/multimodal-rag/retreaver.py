@@ -2,7 +2,7 @@ from import_data_to_vector_store import import_data_to_vector_store
 from langchain.retrievers.multi_vector import MultiVectorRetriever
 from langchain.schema.output_parser import StrOutputParser
 from langchain_core.runnables import RunnableLambda, RunnablePassthrough
-from rag_functions import generate_prompt, model_selection, split_data_type
+from rag_functions import generate_prompt, run_llm_model, split_data_type
 from summarize_images_with_gemini import summarize_images_with_gemini
 
 
@@ -19,7 +19,7 @@ def multimodal_rag(retriever: MultiVectorRetriever, question: str) -> str:
             "question": RunnablePassthrough(),
         }
         | RunnableLambda(generate_prompt)
-        | RunnableLambda(model_selection)
+        | RunnableLambda(run_llm_model)
         | StrOutputParser()
     )
     answer = chain.invoke(question)
@@ -36,8 +36,8 @@ if __name__ == "__main__":
         texts_dict["texts_list"] = [text]
     retriver = generate_retriever(image_dir_path, texts_dict)
 
-    question = "農水省が安全な作業をするために行っている施策について教えてください"
-    # question = "農水省が言及していることを教えて"
+    # question = "農水省が安全な作業をするために行っている施策について教えてください"
+    question = "水産庁についてなにか言及はありますか？"
     answer = multimodal_rag(
         retriver,
         question,

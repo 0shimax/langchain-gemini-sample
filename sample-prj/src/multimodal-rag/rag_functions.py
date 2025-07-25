@@ -61,8 +61,7 @@ def split_data_type(docs: list[str]) -> dict[str, list[str]]:
     return {"images": base64, "texts": text}
 
 
-# 画像がない場合にはgemini-proを選択する
-def model_selection(
+def run_llm_model(
     message: list[BaseMessage], model_name: str = "gemini-2.5-flash-lite"
 ) -> Any:
     api_key = os.getenv("GOOGLE_API_KEY")
