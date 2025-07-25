@@ -6,7 +6,7 @@ from rag_functions import generate_prompt, run_llm_model, split_data_type
 from summarize_images_with_gemini import summarize_images_with_gemini
 
 
-def generate_retriever(image_dir_path: str, text_dict: str) -> MultiVectorRetriever:
+def generate_retriever(image_dir_path: dict, text_dict: dict) -> MultiVectorRetriever:
     images_dict = summarize_images_with_gemini(image_dir_path)
     return import_data_to_vector_store(texts_dict=text_dict, images_dict=images_dict)
 

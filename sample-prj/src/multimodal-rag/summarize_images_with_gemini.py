@@ -49,7 +49,7 @@ def summarize_images_with_gemini(image_dir: str) -> dict[str, list[Any]]:
                 model="gemini-2.5-flash-lite",
                 contents=[
                     image_summary_prompt,
-                    genai.types.Part.from_bytes(data=image_bytes, mime_type="image/png"),
+                    genai.types.Part.from_bytes(data=image_bytes, mime_type="image/jpeg"),
                 ],
             )
 

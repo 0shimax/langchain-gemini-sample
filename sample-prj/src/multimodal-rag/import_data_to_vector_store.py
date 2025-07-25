@@ -10,7 +10,12 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 
 # Helper function to add documents to the vectorstore and docstore
-def _add_documents(id_key, retriever, doc_summaries, doc_contents):
+def _add_documents(
+    id_key: str,
+    retriever: MultiVectorRetriever,
+    doc_summaries: list[Any],
+    doc_contents: list[Any],
+):
     doc_ids = [str(uuid.uuid4()) for _ in doc_contents]
     summary_docs = [
         Document(page_content=s, metadata={id_key: doc_ids[i]})
